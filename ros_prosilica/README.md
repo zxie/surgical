@@ -2,6 +2,16 @@
 > interfacing with the Prosilica GC1290 cameras. ROS provides a very handy
 > package within the `camera_drivers` stack for [Prosilica cameras](http://www.ros.org/wiki/prosilica_camera).
 
+## Installation
+
+First get ROS off of the Willow Garage website. Currently we use Diamondback.
+Then install some other packages:
+1. `sudo apt-get install ros-diamondback-camera-drivers`.
+2. `sudo apt-get install ros-diamondback-camera-pose`.
+3. Add the following to your `~/.bashrc`:
+   `export ROS_PACKAGE_PATH=~/rll/surgical/ros_prosilica:/opt/ros/diamondback:
+   $ROS_PACKAGE_PATH`.
+
 ## Calibration
 
 Camera calibration uses two packages, `camera_calibration` (for intrinsics) and
