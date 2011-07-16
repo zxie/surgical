@@ -563,7 +563,7 @@ CvPoint2D32f camcal::CalculateAngleRespectTo(CvPoint2D32f *arr, int n, CvPoint2D
 
          degree1 = fabs(MapAnglePi2mPi(angles[i]-angle1));
          degree2 = fabs(degree1 - PI/2);
-         if( angleCounter[i] >= max_2 && ((degree2 < PI/6)&&exact || (!exact)&&( degree1 > diff) ) )
+         if( angleCounter[i] >= max_2 && (((degree2 < PI/6)&&exact) || ((!exact)&&( degree1 > diff))))
          {
             max_2 = angleCounter[i];
             maxIndex_2 = i;
