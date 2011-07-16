@@ -68,24 +68,26 @@ void camcal::load( string filename, int im_number  )
    m_input_images  = new IplImage *[im_number];
 
    // load images as IplImage*'s
+   int im_ind = 0;
    for( int i=0; i< im_number; i++)
    {
       sprintf( buffer, filename.c_str(), i );
 
       cout<<"loading image: "<<buffer<<endl;
 
-      m_input_images[i]  = cvLoadImage( buffer );
+      m_input_images[im_ind]  = cvLoadImage( buffer );
 
-      if( m_input_images[i] == NULL )
+      if( m_input_images[im_ind] == NULL )
       {
-         cout<<"null image\n";
-         exit(9);
+         cout<<"no such image " << buffer << endl;
+         continue;
       }
-      if( i==0 )
+      if( im_ind==0 )
       {
          imgsize.width  = m_input_images[0]->width;
          imgsize.height = m_input_images[0]->height;
       }
+      im_ind = im_ind + 1;
    }
 }
 

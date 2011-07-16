@@ -42,7 +42,7 @@ pkgconfigfile := $(packagename).pc
 automakefile := make.auto
 commentfile  := makefile.comment
 
-compiler := g++-4.2
+compiler := g++
 CXX := ${compiler}
 
 
