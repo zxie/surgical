@@ -1,0 +1,5 @@
+EjesX (:,:) = [0 1; 0 0; 0 0;];
+EjesY (:,:) = [0 0; 0 1; 0 0;];
+EjesZ (:,:) = [0 0; 0 0; 0 1;];
+
+plot3(EjesX,EjesY,EjesZ)
