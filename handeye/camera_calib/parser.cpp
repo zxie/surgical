@@ -7,7 +7,7 @@
 using namespace std;
 
 void usage(const char *s){
-  std::cout << "usage:\n" << s << " -n NumberPoses < resultsFile.log > matlabFile.m" << std::endl;
+  std::cout << "usage:\n" << s << " -n NumberPoses -p posFile < resultsFile.log > matlabFile.m" << std::endl;
 }
 
 int main(int argc, char **argv){
@@ -16,10 +16,15 @@ int main(int argc, char **argv){
     return 0;
   }
   int counts;
+  string posFile;
   for (int i=1; i<argc; i++){
     if (strcmp(argv[i], "-n")==0){
       counts = atoi(argv[i+1]);i++;
-    }else{
+    }
+    else if (strcmp(argv[i], "-p")==0) {
+      posFile = argv[i+1];i++;
+    }
+    else{
       usage(argv[0]);
       return 0;
     }
@@ -33,6 +38,12 @@ int main(int argc, char **argv){
   
   int in=1;
   double x;
+  ifstream fpos;
+  fpos.open(posFile.c_str());
+  if(!fpos.good()){
+      cerr<<"error al abrir el archivo: "<<posFile.c_str()<<endl;
+      return 0;
+  }
   while(in < counts+1){
         cout<<"Hgrid2cam(:,:,"<<in<<") = [";
         for(int i=0;i<3;i++){
@@ -46,14 +57,6 @@ int main(int argc, char **argv){
         }
         cout<<" 0 0 0 1];"<<endl;
         cout<<"Hcam2grid(:,:,"<<in<<") = inv(Hgrid2cam(:,:,"<<in<<"));"<<endl;;
-        stringstream filename;
-        filename<<"pos/pos"<<in-1<<".txt";
-        ifstream fpos;
-        fpos.open(filename.str().c_str());
-        if(!fpos.good()){
-            cerr<<"error al abrir el archivo: "<<filename.str()<<endl;
-            return 0;
-        }
         double f[6];  
         for(int i=0;i<6;i++){
             fpos>>f[i];
@@ -61,10 +64,10 @@ int main(int argc, char **argv){
         cout<<"Hmarker2world(:,:,"<<in<<") = [ RotationMatrix("<<f[3]<<","<<f[4]<<","<<f[5]<<") ["<<f[0]<<";"<<f[1]<<";"<<f[2]<<"]; 0 0 0 1;];"<<endl;
 
         cout<<"Hworld2marker(:,:,"<<in<<") = inv(Hmarker2world(:,:,"<<in<<"));"<<endl;;
-        fpos.close();
 
         in++;
     }
+    fpos.close();
     return 0;
 }
 
