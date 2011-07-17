@@ -1,1 +1,5 @@
 *.jpg
+pos*.txt
+camera_calib/camcal
+camera_calib/parser
+raven_tools/*.log
