@@ -130,6 +130,9 @@ if(correctSets)
     Hgrid2worldAvg = averageTransformation(Hgrid2world_)   ; 
     %Errors on the translating part
     disp([sprintf('Backprojection error of the center of the frame : [%g %g %g]\n',std(Hgrid2world_(1,4,1:correctSets)),std(Hgrid2world_(2,4,1:correctSets)),std(Hgrid2world_(3,4,1:correctSets)))]);
+    %disp(Hgrid2world_(1,4,1:correctSets))
+    %disp(Hgrid2world_(2,4,1:correctSets))
+    %disp(Hgrid2world_(3,4,1:correctSets))
     Hcam2marker = Hcam2marker_;
     Hgrid2world = Hgrid2worldAvg;
 end
