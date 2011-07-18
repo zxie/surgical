@@ -2,4 +2,6 @@
 pos*.txt
 camera_calib/camcal
 camera_calib/parser
+camera_calib/*.intrinsic
+camera_calib/*.point_errors
 raven_tools/*.log

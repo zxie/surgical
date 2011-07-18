@@ -34,9 +34,9 @@ void display_help()
    cout<<"  -i/ --imagelist imroot imext number_of_im\n";
    cout<<"  -c/--display-corners\n";
    cout<<"  -r/--apply-ordering  // can be used only with -t 6 8\n";
-   cout<<"  -d/--compansate-distortion\n";
+   cout<<"  -d/--compensate-distortion\n";
    cout<<"  -t/--grid-type ncols nrows\n";
-   cout<<"  -s/--grid-size gw gh\n";
+   cout<<"  -s/--grid-size gw gh (in mm)\n";
    cout<<"  -o/--outfile filename\n";
    cout<<endl;
 }
@@ -76,9 +76,9 @@ int main(int argc, char **argv)
          calibration.apply_ordering();
          continue;
       }
-      if( !strcmp("-d", argv[counter] ) || !strcmp("--compansate-distortion", argv[counter] ) )  {
+      if( !strcmp("-d", argv[counter] ) || !strcmp("--compensate-distortion", argv[counter] ) )  {
          counter++;
-         calibration.compansate_distortion();
+         calibration.compensate_distortion();
          continue;
       }
       if( !strcmp("-t", argv[counter] ) || !strcmp("--grid-type", argv[counter] ) )  {

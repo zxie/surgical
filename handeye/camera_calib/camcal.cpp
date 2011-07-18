@@ -26,7 +26,7 @@ camcal::camcal()
    m_grid_width  = 25;
    m_display_corners = false;
    m_apply_ordering   = true;
-   m_compansate_distortion = true;
+   m_compensate_distortion = true;
 
    m_distortion = NULL;
    m_camera_matrix = NULL;
@@ -89,6 +89,8 @@ void camcal::load( string filename, int im_number  )
       }
       im_ind = im_ind + 1;
    }
+   
+   m_image_number = im_ind;
 }
 
 void camcal::calibrate()
@@ -865,7 +867,7 @@ void camcal::CalculateCalibrationErrors(bool print)
          backProject.y = r3*XYZeff[index].x +r4*XYZeff[index].y +r5*XYZeff[index].z + t1;
          backProject.z = r6*XYZeff[index].x +r7*XYZeff[index].y +r8*XYZeff[index].z + t2;
 
-         if( m_compansate_distortion )
+         if( m_compensate_distortion )
          {
             // apply projection
             uvapp[index].x = backProject.x / backProject.z;
