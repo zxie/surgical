@@ -45,11 +45,11 @@ for i in range(0, pos_count):
     roll, pitch, yaw = int(raven_dict[ori_base+'roll'][i]), \
             int(raven_dict[ori_base+'pitch'][i]), \
             int(raven_dict[ori_base+'yaw'][i])
-#    output += '%f %f %f %f %f %f' % (x/XYZ_SCALE, y/XYZ_SCALE, z/XYZ_SCALE, \
+    output += '%f %f %f %f %f %f' % (-y/XYZ_SCALE, -x/XYZ_SCALE, -z/XYZ_SCALE, \
+            -pitch/YPR_SCALE*180/pi, -roll/YPR_SCALE*180/pi, \
+            -yaw/YPR_SCALE*180/pi) + '\n'
+#    output += '%f %f %f %f %f %f' % (-y/XYZ_SCALE, -x/XYZ_SCALE, -z/XYZ_SCALE, \
 #            roll/YPR_SCALE*180/pi, pitch/YPR_SCALE*180/pi, \
 #            yaw/YPR_SCALE*180/pi) + '\n'
-    output += '%f %f %f %f %f %f' % (-y/XYZ_SCALE, -x/XYZ_SCALE, -z/XYZ_SCALE, \
-            roll/YPR_SCALE*180/pi, pitch/YPR_SCALE*180/pi, \
-            yaw/YPR_SCALE*180/pi) + '\n'
 
 open(out_file, 'w').write(output)

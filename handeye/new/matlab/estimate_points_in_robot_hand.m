@@ -1,0 +1,3 @@
+function estimated_points = estimate_points_in_robot_hand(start_pt, ...
+    start_rot, offset_guess, offset_ang_guess)
+
